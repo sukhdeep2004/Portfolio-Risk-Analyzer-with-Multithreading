@@ -2,28 +2,20 @@ import pandas as pd
 import yfinance as yf
 
 
-def get_sp500_tickers():
-    """
-    Fetches the list of S&P 500 tickers from Wikipedia.
-    """
-    url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
-    tables = pd.read_html(url)
-    sp500_table = tables[0]
-
-    tickers = sp500_table['Symbol'].tolist()
-
-    # Yahoo Finance uses '-' instead of '.' for some tickers
-    tickers = [ticker.replace('.', '-') for ticker in tickers]
-
-    return tickers
-
 
 def get_sp500_close_prices(start, end):
     """
     Downloads daily closing prices for all S&P 500 stocks.
     Returns a DataFrame indexed by date with tickers as columns.
     """
-    tickers ={'AAPL', 'MSFT', 'GOOGL', 'AMZN', 'NFLX','META'}  # Example subset of tickers for demonstration
+    tickers = {
+        'AAPL','MSFT','AMZN','NVDA','GOOGL','GOOG','META','TSLA','JPM',
+        'JNJ','V','XOM','PG','MA','HD','CVX','ABBV','LLY','AVGO',
+        'PEP','COST','KO','MRK','BAC','WMT','DIS','CSCO','ACN','ABT',
+        'ADBE','CRM','MCD','PFE','DHR','INTC','TXN','VZ','TMO','CMCSA',
+        'NFLX','AMD','QCOM','PM','UNH','NEE','LIN','LOW','UPS','BMY'
+    }
+  # Example subset of tickers for demonstration
 
     data = yf.download(
         tickers,

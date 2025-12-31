@@ -1,2 +1,6 @@
 venv
 *.exe
+build
+*.o
+nul
+risk_analyzer

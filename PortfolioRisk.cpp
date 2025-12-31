@@ -3,7 +3,7 @@
 #include <cmath>
 #include <numeric>
 
-double ProtfolioRisk::calculatePortfolioVariance(const std::vector<double>& weights, const Matrix& covMatrix) {
+double PortfolioRisk::calculatePortfolioVariance(const std::vector<double>& weights, const Matrix& covMatrix) {
     if (weights.size() != covMatrix.size()) {
         throw std::runtime_error("Weights size must match covariance matrix size");
     }
@@ -21,6 +21,6 @@ double ProtfolioRisk::calculatePortfolioVariance(const std::vector<double>& weig
     }
     return variance;
 }
-double ProtfolioRisk::calculatePortfolioVolatility(const std::vector<double>& weights, const Matrix& covMatrix) {
+double PortfolioRisk::calculatePortfolioVolatility(const std::vector<double>& weights, const Matrix& covMatrix) {
     return std::sqrt(calculatePortfolioVariance(weights, covMatrix));
 }
