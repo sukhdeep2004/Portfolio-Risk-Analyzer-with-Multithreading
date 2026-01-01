@@ -58,6 +58,12 @@ int main() {
             covariance =
                 ParallelCovariance::calculateCovarianceMatrix(returns);
         }
+        Matrix covariance2;
+        {
+            Timer t("Single thread covariance computation");
+            covariance2 =
+                Statistics::calculateCovarianceMatrix(returns);
+        }
 
         // ================================
         // 5. Annualize covariance
